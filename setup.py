@@ -33,12 +33,15 @@ setup(
     # Choose your license
     license='AGPL 3.0',
 
+    python_requires='>=3.9',
+
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
     ],
 
     # What does your project relate to?
@@ -57,29 +60,29 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'pyramid',
-        'pyramid-beaker',
-        'waitress',
-        'python-ldap',
-        'pyramid_tm',
-        'SQLAlchemy',
-        'transaction',
-        'zope.sqlalchemy==1.1',
-        'pycrypto',
-        'rest_toolkit',
-        'python-dateutil',
-        'apscheduler',
-        'Paste',
-        'beautifulsoup4',
-        'lxml',
-        'pytz',
-        'alembic',
-        'unicodecsv',
-        'jinja2',
-        'click',
-        'pandas',
-        'gunicorn',
-        'psycopg2-binary'
+        'alembic>=1.12,<2',
+        'apscheduler>=3.10,<4',
+        'beautifulsoup4>=4.10,<5',
+        'click>=8.1,<9',
+        'gunicorn>=21,<22',
+        'jinja2>=3,<4',
+        'lxml>=4.9,<5',
+        'pandas>=1.5,<3',
+        'Paste>=3.10,<4',
+        'psycopg2-binary>=2.9,<3',
+        'pyramid>=2.0,<3',
+        'pyramid-beaker>=0.9,<1',
+        'pyramid_tm>=2.6,<3',
+        'python-dateutil>=2.8,<3',
+        'python-ldap>=3.4,<4',
+        'pytz>=2023.3',
+        'rest_toolkit>=0.17,<0.18',
+        'SQLAlchemy>=1.4,<2',
+        'transaction>=3,<4',
+        'unicodecsv>=0.14,<0.15',
+        'waitress>=2.1,<3',
+        'zope.sqlalchemy>=1.6,<2',
+        'pycryptodome>=3.18,<4'
     ],
 
     # List additional groups of dependencies here (e.g. development

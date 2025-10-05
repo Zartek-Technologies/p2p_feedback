@@ -1,7 +1,7 @@
-FROM node:10
+FROM node:14-bullseye
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /opt/app-root/src
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
