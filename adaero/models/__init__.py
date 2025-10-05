@@ -66,7 +66,6 @@ def _get_sqlite_engine(filepath):
 def get_session_factory(engine):
     return sessionmaker(
         bind=engine,
-        extension=zope.sqlalchemy.ZopeTransactionExtension(),
         expire_on_commit=False,
     )
 

@@ -19,26 +19,21 @@ The following steps were run on a minimal install of Ubuntu LTS 18.04.4
 
 0. Ensure you have the pre-requisites installed
    ```
-   sudo apt install docker.io python3 python3-pip curl
-   sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-   sudo chmod +x /usr/local/bin/docker-compose
+   sudo apt install docker.io docker-compose-plugin python3 python3-venv
    ```
-1. Build and Run the application on local Docker
+1. Build and run the application with Docker Compose
    ```
-   cd frontend
-   sudo docker build -t adaero-dev-frontend . 
-   cd ..
-   sudo docker build -t adaero-app . 
    cd docker/dev
-   docker-compose up -d
+   docker compose up --build -d
    ```
 
-2. Setup a dummy template, 3 question and period data to carry out a feedback cycle.
+2. Set up demo data (from the repository root)
    ```
    cd ../..
-   sudo pip3 install -e .
-   sudo pip3 install pytest faker freezegun webtest mock 
-   python3 tests/scripts/configure_db.py --config host_example.ini add-test-periods
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -e .[test]
+   python tests/scripts/configure_db.py --config host_example.ini add-test-periods
    ```
 
 3. Once fully started, open http://localhost:4200. The table below shows the users 
@@ -65,10 +60,10 @@ The following steps were run on a minimal install of Ubuntu LTS 18.04.4
 6. Use the following commands to change phases.
 
    ```
-   python3 tests/scripts/configure_db.py --config host_example.ini --subperiod enrollment adjust
-   python3 tests/scripts/configure_db.py --config host_example.ini --subperiod entry adjust
-   python3 tests/scripts/configure_db.py --config host_example.ini --subperiod approval adjust
-   python3 tests/scripts/configure_db.py --config host_example.ini --subperiod review adjust
+   python tests/scripts/configure_db.py --config host_example.ini --subperiod enrollment adjust
+   python tests/scripts/configure_db.py --config host_example.ini --subperiod entry adjust
+   python tests/scripts/configure_db.py --config host_example.ini --subperiod approval adjust
+   python tests/scripts/configure_db.py --config host_example.ini --subperiod review adjust
    ```
    
 7. For a more comprehensive guide, please see the [user guide](/docs/user-guide.pdf)

@@ -1,13 +1,16 @@
-FROM ubuntu:18.04
+FROM python:3.11-slim
 
-WORKDIR /usr/src/app
-COPY install-packages.sh .
-RUN ./install-packages.sh
-RUN curl https://bootstrap.pypa.io/get-pip.py | python3.6
-COPY setup.py .
-RUN pip3.6 install -e .
-COPY adaero adaero
-COPY gunicorn_starter.sh .
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /opt/app-root/src
+
+COPY install-packages.sh ./
+RUN ./install-packages.sh && rm install-packages.sh
+
+COPY . ./
+RUN pip install --upgrade pip setuptools wheel \
+    && pip install -e .[postgres]
 
 EXPOSE 8080
 ENTRYPOINT ["./gunicorn_starter.sh"]

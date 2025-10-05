@@ -1,6 +1,8 @@
 version: '2.4'
 services:
   webserver:
+    build:
+      context: ../../frontend
     image: adaero-dev-frontend:latest
     volumes:
       - ../../frontend/src:/opt/app-root/src/src
@@ -18,7 +20,8 @@ services:
     logging:
       driver: "none"
   webapp:
-    image: adaero-app:latest
+    build:
+      context: ../..
     networks:
       - web
       - db

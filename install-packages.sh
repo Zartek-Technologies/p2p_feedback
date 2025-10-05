@@ -16,12 +16,19 @@ apt-get update
 # Install security updates:
 apt-get -y upgrade
 
-# Install a new package, without unnecessary recommended packages:
+# Install build and runtime dependencies required by the Python stack:
 apt-get -y install --no-install-recommends \
-  python3.6 curl ca-certificates \
-  autoconf build-essential \
-  libxml2-dev libxslt-dev python3-dev \
-  libldap2-dev libsasl2-dev slapd ldap-utils
+  build-essential \
+  ca-certificates \
+  curl \
+  gcc \
+  libffi-dev \
+  libldap2-dev \
+  libpq-dev \
+  libsasl2-dev \
+  libssl-dev \
+  libxml2-dev \
+  libxslt-dev
 
 # Delete cached files we don't need anymore:
 apt-get clean
